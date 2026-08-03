@@ -59,7 +59,15 @@ jobs:
       - name: Select topics and render two carousels plus one Reel
         working-directory: factory
         shell: bash
-        run: npm run select && KOKORO_MODEL_DIR="$HOME/.cache/talia-kokoro" python scripts/generate_voice.py && npm run render
+        run: |
+          npm run select
+          batch_date=$(node -e "console.log(require('./current-batch.json').batchDate)")
+          if [[ -f "../media/drafts/$batch_date/manifest.json" ]]; then
+            echo "Draft batch $batch_date already exists; reusing it."
+          else
+            KOKORO_MODEL_DIR="$HOME/.cache/talia-kokoro" python scripts/generate_voice.py
+            npm run render
+          fi
 
       - name: Optionally approve without review
         if: vars.CONTENT_AUTO_APPROVE == 'true'
