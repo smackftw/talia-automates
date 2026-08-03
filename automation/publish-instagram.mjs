@@ -70,12 +70,10 @@ if (dryRun) {
 }
 
 const accessToken = process.env.INSTAGRAM_ACCESS_TOKEN;
-const userId = process.env.INSTAGRAM_USER_ID;
+let userId = process.env.INSTAGRAM_USER_ID;
 const apiVersion = process.env.INSTAGRAM_API_VERSION || "v23.0";
-if (!accessToken || !userId) {
-  throw new Error(
-    "INSTAGRAM_ACCESS_TOKEN and INSTAGRAM_USER_ID are required for a live publish.",
-  );
+if (!accessToken) {
+  throw new Error("INSTAGRAM_ACCESS_TOKEN is required for a live publish.");
 }
 
 const apiBase = `https://graph.instagram.com/${apiVersion}`;
@@ -111,6 +109,15 @@ async function graphPost(path, params) {
     body: new URLSearchParams(params),
   });
   return parseGraphResponse(response);
+}
+
+if (!userId) {
+  const profile = await graphGet("me", { fields: "user_id,username" });
+  userId = profile.user_id || profile.id;
+  if (!userId) {
+    throw new Error("Instagram API did not return a user ID for this token.");
+  }
+  console.log(`Authenticated as @${profile.username || "unknown"}.`);
 }
 
 async function findExistingPost() {

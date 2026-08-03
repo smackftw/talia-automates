@@ -7,7 +7,9 @@ four queued assets from public GitHub Pages URLs. Carousel source images are
 Required GitHub Actions secrets:
 
 - `INSTAGRAM_ACCESS_TOKEN`
-- `INSTAGRAM_USER_ID`
+
+`INSTAGRAM_USER_ID` is optional: when it is absent, the publisher resolves the
+account ID securely from the token through the `/me` endpoint.
 
 Optional repository variable:
 
