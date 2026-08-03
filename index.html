@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Free practical n8n workflows for freelancers, solo agencies and small businesses by Talia Automates.">
+  <title>Talia Automates — Free n8n Workflows</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#top">
+      <img src="assets/talia-avatar.png" alt="Talia Automates, an AI-generated automation creator">
+      <span>Talia Automates</span>
+    </a>
+    <span class="ai-label">AI-generated creator</span>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <p class="eyebrow">PRACTICAL AUTOMATION FOR SOLO BUSINESSES</p>
+      <h1>Two useful n8n workflows.<br><span>Free to import.</span></h1>
+      <p class="lead">Stop losing leads in spreadsheets and inboxes. Download the workflow JSON, connect your own credentials and test it safely.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#workflows">Get the workflows</a>
+        <a class="button secondary" href="#setup">Read setup notes</a>
+      </div>
+    </section>
+
+    <section class="trust">
+      <div><strong>2</strong><span>importable workflows</span></div>
+      <div><strong>0</strong><span>credentials embedded</span></div>
+      <div><strong>100%</strong><span>editable in n8n</span></div>
+    </section>
+
+    <section id="workflows" class="section">
+      <p class="eyebrow">FREE WORKFLOW 01</p>
+      <article class="workflow-card">
+        <div>
+          <h2>Daily lead follow-up</h2>
+          <p>Checks a Google Sheet each morning, selects due leads, sends a personalized Gmail follow-up and writes the sent date back to the tracker.</p>
+          <ol>
+            <li>Schedule Trigger</li>
+            <li>Google Sheets</li>
+            <li>Due-date filter</li>
+            <li>Gmail</li>
+            <li>Update row</li>
+          </ol>
+        </div>
+        <div class="downloads">
+          <a class="button primary" href="downloads/talia-lead-follow-up.json" download>Download workflow JSON</a>
+          <a class="text-link" href="downloads/follow-up-sheet.csv" download>Download Sheet template →</a>
+        </div>
+      </article>
+
+      <p class="eyebrow second">FREE WORKFLOW 02</p>
+      <article class="workflow-card">
+        <div>
+          <h2>AI Gmail lead triage</h2>
+          <p>Classifies incoming enquiries with an OpenAI model, alerts Slack when buying intent is high and logs every result to Google Sheets.</p>
+          <ol>
+            <li>Gmail Trigger</li>
+            <li>Text Classifier</li>
+            <li>OpenAI Chat Model</li>
+            <li>Slack alert</li>
+            <li>Google Sheets log</li>
+          </ol>
+        </div>
+        <div class="downloads">
+          <a class="button primary" href="downloads/talia-ai-lead-triage.json" download>Download workflow JSON</a>
+          <a class="text-link" href="downloads/triage-log-sheet.csv" download>Download Sheet template →</a>
+        </div>
+      </article>
+    </section>
+
+    <section id="setup" class="section setup">
+      <p class="eyebrow">BEFORE YOU ACTIVATE</p>
+      <h2>Connect, test, then automate.</h2>
+      <div class="steps">
+        <div><span>01</span><h3>Import</h3><p>Open n8n, create a workflow and import the downloaded JSON.</p></div>
+        <div><span>02</span><h3>Connect</h3><p>Add your own Google, Gmail, OpenAI and Slack credentials where required.</p></div>
+        <div><span>03</span><h3>Test</h3><p>Use your own email and sample rows before activating any schedule or trigger.</p></div>
+      </div>
+    </section>
+
+    <section class="notice">
+      <h2>Important</h2>
+      <p>These templates are educational starting points, not managed services. Review recipients, permissions, rate limits and AI classifications before production use. Never upload credentials inside a workflow JSON.</p>
+      <p><strong>Disclosure:</strong> Talia is an AI-generated creator. This page currently contains no affiliate link. If affiliate links are added later, they will be clearly marked.</p>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Talia Automates</span>
+    <span>Built for freelancers and solo agencies</span>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,230 @@
+{
+  "name": "Talia Automates - AI Gmail Lead Triage",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Talia Automates - AI Gmail Lead Triage\n\nWatches unread Gmail messages, normalizes the email, asks an OpenAI model to classify sales urgency, sends hot leads to Slack, and logs every classification to Google Sheets.\n\nRequired log columns: received_at, message_id, sender, subject, body, intent, urgency, score.\n\nBefore activating: connect Gmail, OpenAI, Slack and Google Sheets credentials; choose a Slack channel; select the log spreadsheet; test with sample emails; review model output before relying on it.",
+        "height": 410,
+        "width": 1250
+      },
+      "id": "f4583d87-8f5d-4e55-9b71-5e23c607ae6b",
+      "name": "Setup guide",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-280, -360]
+    },
+    {
+      "parameters": {
+        "simple": false,
+        "filters": {
+          "labelIds": ["INBOX"],
+          "readStatus": "unread"
+        },
+        "options": {},
+        "pollTimes": {
+          "item": [{"mode": "everyMinute"}]
+        }
+      },
+      "id": "d668a1ad-ddbd-4aa8-8e3c-1f3c564a6a75",
+      "name": "Watch unread Gmail",
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.3,
+      "position": [-180, 240]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "66b26512-4d48-46d7-bc14-6a67bd108181",
+              "name": "received_at",
+              "type": "string",
+              "value": "={{ $now.toFormat('yyyy-MM-dd HH:mm:ss') }}"
+            },
+            {
+              "id": "81b211f5-e0b2-4f1c-848b-f84657376d84",
+              "name": "message_id",
+              "type": "string",
+              "value": "={{ $json.id }}"
+            },
+            {
+              "id": "1f159647-8013-451a-aec0-71319c650466",
+              "name": "sender",
+              "type": "string",
+              "value": "={{ $json.headers?.from || $json.From || '' }}"
+            },
+            {
+              "id": "8554b5e1-4c82-4fa5-8ec9-a40ee27e0a1f",
+              "name": "subject",
+              "type": "string",
+              "value": "={{ $json.headers?.subject || $json.Subject || '' }}"
+            },
+            {
+              "id": "2c281c36-4b8e-42b4-998f-7ca171490126",
+              "name": "body",
+              "type": "string",
+              "value": "={{ $json.textPlain || $json.text || $json.bodyPlain || $json.snippet || '' }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f112cbfd-fc34-4818-b354-d0ab04e7a5af",
+      "name": "Normalize email",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [80, 240]
+    },
+    {
+      "parameters": {
+        "inputText": "=Sender: {{ $json.sender }}\nSubject: {{ $json.subject }}\nEmail: {{ $json.body }}",
+        "categories": {
+          "categories": [
+            {
+              "category": "hot_sales_lead",
+              "description": "A real prospect showing strong buying intent or urgency: explicitly asks for pricing, a quote, a demo, a call, availability, implementation timing, or says they are ready to start. Use only when a timely response could directly affect a sale."
+            },
+            {
+              "category": "warm_sales_lead",
+              "description": "A plausible prospect exploring services, capabilities, integrations, fit, comparisons, or possible future work, but without an immediate request to buy or meet."
+            },
+            {
+              "category": "cold_sales_lead",
+              "description": "A weak or ambiguous commercial signal that might become a lead but lacks a defined need, urgency, budget, timing, or clear next step."
+            },
+            {
+              "category": "not_a_sales_lead",
+              "description": "Newsletters, automated notifications, spam, support messages, invoices, job applications, personal mail, vendor outreach, or any email that is not a potential customer enquiry."
+            }
+          ]
+        },
+        "options": {"fallback": "other"}
+      },
+      "id": "6792cae0-368b-4418-9500-7a483b8fc23b",
+      "name": "Classify lead urgency",
+      "type": "@n8n/n8n-nodes-langchain.textClassifier",
+      "typeVersion": 1.1,
+      "position": [360, 240]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-5-mini"
+        },
+        "options": {},
+        "builtInTools": {}
+      },
+      "id": "d2022f34-bf89-4e25-af56-3f1d1b41c078",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [360, 500]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "return {json: {...$json, intent: 'sales', urgency: 'hot', score: 9}};"
+      },
+      "id": "2890d1a1-2350-4f57-9ea5-caf557c31dbd",
+      "name": "Mark hot",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [660, 40]
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "YOUR_SLACK_CHANNEL_ID"
+        },
+        "text": "=HOT LEAD\nFrom: {{ $json.sender }}\nSubject: {{ $json.subject }}\nScore: {{ $json.score }}/10\n\n{{ $json.body }}",
+        "otherOptions": {},
+        "authentication": "oAuth2"
+      },
+      "id": "4d7e611a-4023-444a-a635-92952bb988e1",
+      "name": "Alert Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [920, 40]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "return {json: {...$json, intent: 'sales', urgency: 'warm', score: 6}};"
+      },
+      "id": "63c5ac84-cb80-48e9-b7be-ff179a531e51",
+      "name": "Mark warm",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [660, 220]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "return {json: {...$json, intent: 'sales', urgency: 'cold', score: 3}};"
+      },
+      "id": "74ec91b0-a683-4abc-8b0f-f6106ab7e821",
+      "name": "Mark cold",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [660, 400]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "return {json: {...$json, intent: 'not_lead', urgency: 'none', score: 0}};"
+      },
+      "id": "f3a84dd0-59f7-4878-88c3-14b3cc706bf8",
+      "name": "Mark not lead",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [660, 580]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": "YOUR_GOOGLE_SHEET_ID",
+        "sheetName": "Lead Triage",
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": []
+        },
+        "options": {}
+      },
+      "id": "6892ee50-cf63-4974-bdb1-e7400ed96196",
+      "name": "Log classification",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [1200, 300]
+    }
+  ],
+  "connections": {
+    "Watch unread Gmail": {"main": [[{"node": "Normalize email", "type": "main", "index": 0}]]},
+    "Normalize email": {"main": [[{"node": "Classify lead urgency", "type": "main", "index": 0}]]},
+    "OpenAI Chat Model": {"ai_languageModel": [[{"node": "Classify lead urgency", "type": "ai_languageModel", "index": 0}]]},
+    "Classify lead urgency": {
+      "main": [
+        [{"node": "Mark hot", "type": "main", "index": 0}],
+        [{"node": "Mark warm", "type": "main", "index": 0}],
+        [{"node": "Mark cold", "type": "main", "index": 0}],
+        [{"node": "Mark not lead", "type": "main", "index": 0}],
+        [{"node": "Mark not lead", "type": "main", "index": 0}]
+      ]
+    },
+    "Mark hot": {"main": [[{"node": "Alert Slack", "type": "main", "index": 0}]]},
+    "Alert Slack": {"main": [[{"node": "Log classification", "type": "main", "index": 0}]]},
+    "Mark warm": {"main": [[{"node": "Log classification", "type": "main", "index": 0}]]},
+    "Mark cold": {"main": [[{"node": "Log classification", "type": "main", "index": 0}]]},
+    "Mark not lead": {"main": [[{"node": "Log classification", "type": "main", "index": 0}]]}
+  },
+  "pinData": {},
+  "settings": {"executionOrder": "v1", "timezone": "Asia/Nicosia"},
+  "active": false,
+  "versionId": "2fe31ae7-2bb8-472b-836d-ab62924a0b6c",
+  "tags": []
+}

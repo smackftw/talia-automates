@@ -1,0 +1,115 @@
+{
+  "name": "Talia Automates - Daily Lead Follow-up",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Talia Automates - Daily Lead Follow-up\n\nReads active leads from Google Sheets every morning, selects rows whose next_follow_up date is due, sends one personalized Gmail message per lead, then stamps last_sent so the same lead is not emailed twice that day.\n\nRequired columns: lead_id, name, email, interest, next_follow_up, status, last_sent, subject, body.\n\nBefore activating: connect Google Sheets and Gmail credentials, select the same spreadsheet in both Sheets nodes, replace YOUR_NAME in the code node, test with your own email, and confirm the workflow timezone.",
+        "height": 390,
+        "width": 1120
+      },
+      "id": "af3b66db-f0cb-4837-ac9a-b3e7f7a47934",
+      "name": "Setup guide",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-260, -260]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [{"field": "days", "triggerAtHour": 9}]
+        }
+      },
+      "id": "6137a768-d67b-46ba-8716-1db911978162",
+      "name": "Every day at 9am",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [-180, 260]
+    },
+    {
+      "parameters": {},
+      "id": "2154304d-9829-4ad7-9d50-f641345f9fde",
+      "name": "Manual test",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [-180, 440]
+    },
+    {
+      "parameters": {
+        "documentId": "YOUR_GOOGLE_SHEET_ID",
+        "sheetName": "Leads",
+        "options": {}
+      },
+      "id": "650ce9b5-f06e-4180-8886-e5e365ac1983",
+      "name": "Read lead tracker",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [80, 340]
+    },
+    {
+      "parameters": {
+        "jsCode": "const today = $now.toFormat('yyyy-MM-dd');\nconst due = [];\n\nfor (const item of $input.all()) {\n  const lead = item.json;\n  const status = String(lead.status || 'active').trim().toLowerCase();\n  const dueDate = String(lead.next_follow_up || '').trim();\n  const lastSent = String(lead.last_sent || '').trim();\n  const email = String(lead.email || '').trim();\n\n  if (status !== 'active' || !email || !dueDate) continue;\n  if (dueDate > today || lastSent === today) continue;\n\n  const name = String(lead.name || 'there').trim();\n  const interest = String(lead.interest || 'your enquiry').trim();\n  const subject = String(lead.subject || ('Quick follow-up: ' + interest)).trim();\n  const body = String(lead.body || ('Hi ' + name + ',\\n\\nJust following up on ' + interest + '. Is this still a priority for you?\\n\\nBest,\\nYOUR_NAME'));\n\n  due.push({json: {lead_id: lead.lead_id, name, email, interest, status, next_follow_up: dueDate, last_sent: lastSent, subject, body}});\n}\n\nreturn due;"
+      },
+      "id": "9942db1e-b900-4179-8705-c8aa19076a19",
+      "name": "Select due leads",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [340, 340]
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.email }}",
+        "subject": "={{ $json.subject }}",
+        "message": "={{ $json.body }}",
+        "emailType": "text",
+        "options": {}
+      },
+      "id": "15fc03c3-c53a-498f-858c-6399cd4670a0",
+      "name": "Send follow-up",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [600, 340]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const lead = $('Select due leads').item.json;\nreturn {json: {lead_id: lead.lead_id, last_sent: $now.toFormat('yyyy-MM-dd'), status: lead.status}};"
+      },
+      "id": "c332cd9f-af75-41d2-a96e-bb3af75b2632",
+      "name": "Build sent stamp",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [860, 340]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": "YOUR_GOOGLE_SHEET_ID",
+        "sheetName": "Leads",
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": ["lead_id"]
+        },
+        "options": {}
+      },
+      "id": "966f616f-f962-4162-96ef-4e1a09f3ab39",
+      "name": "Stamp last sent",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [1120, 340]
+    }
+  ],
+  "connections": {
+    "Every day at 9am": {"main": [[{"node": "Read lead tracker", "type": "main", "index": 0}]]},
+    "Manual test": {"main": [[{"node": "Read lead tracker", "type": "main", "index": 0}]]},
+    "Read lead tracker": {"main": [[{"node": "Select due leads", "type": "main", "index": 0}]]},
+    "Select due leads": {"main": [[{"node": "Send follow-up", "type": "main", "index": 0}]]},
+    "Send follow-up": {"main": [[{"node": "Build sent stamp", "type": "main", "index": 0}]]},
+    "Build sent stamp": {"main": [[{"node": "Stamp last sent", "type": "main", "index": 0}]]}
+  },
+  "pinData": {},
+  "settings": {"executionOrder": "v1", "timezone": "Asia/Nicosia"},
+  "active": false,
+  "versionId": "4f8a3774-34c9-4e34-b4b9-82b344692e09",
+  "tags": []
+}
