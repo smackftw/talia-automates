@@ -1,0 +1,75 @@
+name: Publish Instagram content
+
+on:
+  schedule:
+    # 16:00 UTC = 19:00 Asia/Nicosia in August.
+    - cron: "0 16 5-8 8 *"
+  workflow_dispatch:
+    inputs:
+      content_id:
+        description: Content to validate or publish
+        required: true
+        type: choice
+        options:
+          - reel-03
+          - post-07
+          - post-08
+          - post-09
+      dry_run:
+        description: Validate only; do not publish
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: instagram-publisher
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.event_name == 'workflow_dispatch' || vars.IG_AUTOPUBLISH_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+      INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+      INSTAGRAM_API_VERSION: ${{ vars.INSTAGRAM_API_VERSION || 'v23.0' }}
+
+    steps:
+      - name: Check out media and publisher
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate or publish
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            args=("--content=${{ inputs.content_id }}")
+            if [[ "${{ inputs.dry_run }}" == "true" ]]; then
+              args+=("--dry-run")
+            fi
+          else
+            args=("--scheduled")
+          fi
+          node automation/publish-instagram.mjs "${args[@]}"
+
+      - name: Save successful publication state
+        if: success() && (github.event_name == 'schedule' || inputs.dry_run == false)
+        shell: bash
+        run: |
+          if git diff --quiet -- automation/published.json; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add automation/published.json
+          git commit -m "Record Instagram publication"
+          git pull --rebase
+          git push
