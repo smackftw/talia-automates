@@ -2,6 +2,9 @@ import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { publicationQueue } from "./content.mjs";
 
+class GracefulExit extends Error {}
+
+try {
 const args = new Set(process.argv.slice(2));
 const contentArg = process.argv
   .slice(2)
@@ -33,7 +36,7 @@ if (!item) {
     : `Nothing scheduled for ${todayInCyprus} (Asia/Nicosia).`;
   if (requestedId) throw new Error(message);
   console.log(message);
-  process.exit(0);
+  throw new GracefulExit();
 }
 
 const statePath = fileURLToPath(new URL("./published.json", import.meta.url));
@@ -42,7 +45,7 @@ if (state.published[item.id]) {
   console.log(
     `${item.id} is already recorded as published: ${state.published[item.id].instagramMediaId}`,
   );
-  process.exit(0);
+  throw new GracefulExit();
 }
 
 const assetUrls = item.type === "reel" ? [item.videoUrl] : item.imageUrls;
@@ -63,7 +66,7 @@ if (dryRun) {
   console.log(
     `DRY RUN OK: ${item.id}, ${item.type}, ${assetUrls.length} public asset(s), scheduled ${item.scheduledDate}.`,
   );
-  process.exit(0);
+  throw new GracefulExit();
 }
 
 const accessToken = process.env.INSTAGRAM_ACCESS_TOKEN;
@@ -175,7 +178,7 @@ if (existing) {
   };
   await writeFile(statePath, `${JSON.stringify(state, null, 2)}\n`);
   console.log(`${item.id} already exists on Instagram; local state repaired.`);
-  process.exit(0);
+  throw new GracefulExit();
 }
 
 console.log(`Creating ${item.type} container for ${item.id}...`);
@@ -195,3 +198,6 @@ state.published[item.id] = {
 };
 await writeFile(statePath, `${JSON.stringify(state, null, 2)}\n`);
 console.log(`Published ${item.id}: ${media.permalink || published.id}`);
+} catch (error) {
+  if (!(error instanceof GracefulExit)) throw error;
+}
