@@ -65,14 +65,16 @@ jobs:
         if: vars.CONTENT_AUTO_APPROVE == 'true'
         shell: bash
         run: |
-          batch_date=$(node -p "require('./factory/current-batch.json').batchDate")
+          batch_date=$(node -e "console.log(require('./factory/current-batch.json').batchDate)")
           first_date=$(node -e "const d=new Date(); d.setUTCDate(d.getUTCDate()+1); console.log(d.toISOString().slice(0,10))")
           node factory/scripts/approve-batch.mjs "$batch_date" "$first_date"
 
       - id: batch
         name: Read batch date
         shell: bash
-        run: echo "date=$(node -p \"require('./factory/current-batch.json').batchDate\")" >> "$GITHUB_OUTPUT"
+        run: |
+          batch_date=$(node -e "console.log(require('./factory/current-batch.json').batchDate)")
+          echo "date=$batch_date" >> "$GITHUB_OUTPUT"
 
       - name: Save rendered drafts
         shell: bash
