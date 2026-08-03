@@ -11,7 +11,12 @@ const contentArg = process.argv
   .find((value) => value.startsWith("--content="));
 const requestedId = contentArg?.slice("--content=".length);
 const dryRun = args.has("--dry-run");
+const verifyToken = args.has("--verify-token");
 const scheduled = args.has("--scheduled");
+
+if (dryRun && verifyToken) {
+  throw new Error("Use either --dry-run or --verify-token, not both.");
+}
 
 if ((!requestedId && !scheduled) || (requestedId && scheduled)) {
   throw new Error(
@@ -118,6 +123,12 @@ if (!userId) {
     throw new Error("Instagram API did not return a user ID for this token.");
   }
   console.log(`Authenticated as @${profile.username || "unknown"}.`);
+}
+
+if (verifyToken) {
+  const profile = await graphGet("me", { fields: "user_id,username" });
+  console.log(`TOKEN OK: @${profile.username || "unknown"} is authorized.`);
+  throw new GracefulExit();
 }
 
 async function findExistingPost() {

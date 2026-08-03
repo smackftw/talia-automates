@@ -20,6 +20,11 @@ on:
         required: true
         default: true
         type: boolean
+      verify_token:
+        description: Verify Instagram token; do not publish
+        required: true
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -55,13 +60,16 @@ jobs:
             if [[ "${{ inputs.dry_run }}" == "true" ]]; then
               args+=("--dry-run")
             fi
+            if [[ "${{ inputs.verify_token }}" == "true" ]]; then
+              args+=("--verify-token")
+            fi
           else
             args=("--scheduled")
           fi
           node automation/publish-instagram.mjs "${args[@]}"
 
       - name: Save successful publication state
-        if: success() && (github.event_name == 'schedule' || inputs.dry_run == false)
+        if: success() && (github.event_name == 'schedule' || (inputs.dry_run == false && inputs.verify_token == false))
         shell: bash
         run: |
           if git diff --quiet -- automation/published.json; then

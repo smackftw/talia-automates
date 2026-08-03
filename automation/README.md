@@ -24,3 +24,9 @@ Local public-file validation:
 ```powershell
 node automation/publish-instagram.mjs --content=reel-03 --dry-run
 ```
+
+Token-only validation without publishing:
+
+```powershell
+node automation/publish-instagram.mjs --content=reel-03 --verify-token
+```
