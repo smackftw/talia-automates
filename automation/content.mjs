@@ -1,7 +1,9 @@
+import { readFileSync } from "node:fs";
+
 const mediaBase =
   "https://smackftw.github.io/talia-automates/media/instagram/2026-08";
 
-export const publicationQueue = [
+const fixedQueue = [
   {
     id: "reel-03",
     type: "reel",
@@ -74,3 +76,9 @@ Reliable first. Intelligent second.
 #n8n #workflowdesign #automation #aiagents #buildinpublic`,
   },
 ];
+
+const approved = JSON.parse(
+  readFileSync(new URL("./approved-content.json", import.meta.url), "utf8"),
+);
+
+export const publicationQueue = [...fixedQueue, ...(approved.items || [])];

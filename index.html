@@ -6,6 +6,8 @@
   <meta name="description" content="Free practical n8n workflows for freelancers, solo agencies and small businesses by Talia Automates.">
   <title>Talia Automates — Free n8n Workflows</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="newsletter-config.js" defer></script>
+  <script src="newsletter.js" defer></script>
 </head>
 <body>
   <header class="nav">
@@ -83,6 +85,22 @@
       </div>
     </section>
 
+    <section id="newsletter" class="newsletter" hidden>
+      <div>
+        <p class="eyebrow">ONE PRACTICAL EMAIL A WEEK</p>
+        <h2>Build automations you can trust.</h2>
+        <p>Get the starter pack now, then one short workflow pattern each week. No daily noise.</p>
+      </div>
+      <form id="newsletter-form" method="post">
+        <label for="newsletter-email">Email address</label>
+        <div class="form-row">
+          <input id="newsletter-email" name="email_address" type="email" autocomplete="email" placeholder="you@company.com" required>
+          <button class="button primary" type="submit">Send the starter pack</button>
+        </div>
+        <p class="form-note">By subscribing, you agree to receive Talia's automation emails. Unsubscribe anytime. See the <a href="privacy.html">privacy notice</a>.</p>
+      </form>
+    </section>
+
     <section class="notice">
       <h2>Important</h2>
       <p>These templates are educational starting points, not managed services. Review recipients, permissions, rate limits and AI classifications before production use. Never upload credentials inside a workflow JSON.</p>
@@ -92,7 +110,7 @@
 
   <footer>
     <span>© 2026 Talia Automates</span>
-    <span>Built for freelancers and solo agencies</span>
+    <span><a href="privacy.html">Privacy</a> · Built for freelancers and solo agencies</span>
   </footer>
 </body>
 </html>

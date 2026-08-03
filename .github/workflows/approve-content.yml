@@ -1,0 +1,44 @@
+name: Approve content batch
+
+on:
+  workflow_dispatch:
+    inputs:
+      batch_date:
+        description: Draft batch date (YYYY-MM-DD)
+        required: true
+        type: string
+      first_publication_date:
+        description: Date for the first post (YYYY-MM-DD)
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: content-approval
+  cancel-in-progress: false
+
+jobs:
+  approve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate and approve batch
+        run: node factory/scripts/approve-batch.mjs "${{ inputs.batch_date }}" "${{ inputs.first_publication_date }}"
+
+      - name: Save scheduled queue
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add automation/approved-content.json
+          git commit -m "Approve content batch ${{ inputs.batch_date }}"
+          git pull --rebase
+          git push

@@ -1,0 +1,39 @@
+{
+  "batchDate": "2026-08-04",
+  "status": "awaiting-approval",
+  "generatedFrom": "balanced starter rotation",
+  "items": [
+    {
+      "id": "draft-2026-08-04-carousel-1",
+      "type": "carousel",
+      "topicId": "failure-workflow",
+      "category": "safety",
+      "caption": "A production workflow needs a second workflow that watches it.\n\n1. Catch the error\n2. Capture the input\n3. Alert the owner\n4. Link to the failed run\n\nAdd one shared error handler before adding another automation.\n\nSave this for your next build. Two free n8n starter templates are available through the link in bio.\n\n#n8n #automation #workflowautomation #aiautomation #solopreneur",
+      "imageUrls": [
+        "https://smackftw.github.io/talia-automates/media/drafts/2026-08-04/carousel-01/slide-01.png",
+        "https://smackftw.github.io/talia-automates/media/drafts/2026-08-04/carousel-01/slide-02.png",
+        "https://smackftw.github.io/talia-automates/media/drafts/2026-08-04/carousel-01/slide-03.png"
+      ]
+    },
+    {
+      "id": "draft-2026-08-04-carousel-2",
+      "type": "carousel",
+      "topicId": "duplicate-proof-leads",
+      "category": "safety",
+      "caption": "Retries are normal. Duplicate actions do not have to be.\n\n1. Create a unique lead key\n2. Check the sent log\n3. Send only if missing\n4. Write the key after success\n\nUse a stable key around every email, invoice, or CRM update.\n\nSave this for your next build. Two free n8n starter templates are available through the link in bio.\n\n#n8n #automation #workflowautomation #aiautomation #solopreneur",
+      "imageUrls": [
+        "https://smackftw.github.io/talia-automates/media/drafts/2026-08-04/carousel-02/slide-01.png",
+        "https://smackftw.github.io/talia-automates/media/drafts/2026-08-04/carousel-02/slide-02.png",
+        "https://smackftw.github.io/talia-automates/media/drafts/2026-08-04/carousel-02/slide-03.png"
+      ]
+    },
+    {
+      "id": "draft-2026-08-04-reel-1",
+      "type": "reel",
+      "topicId": "daily-lead-digest",
+      "category": "starter-workflows",
+      "caption": "Turn scattered enquiries into one ranked morning brief.\n\n1. Read new enquiries\n2. Normalize the fields\n3. Rank by buying intent\n4. Send one daily digest\n\nReview one list at 9 AM instead of checking four tools all day.\n\nSave this for your next build. Two free n8n starter templates are available through the link in bio.\n\n#n8n #automation #workflowautomation #aiautomation #solopreneur",
+      "videoUrl": "https://smackftw.github.io/talia-automates/media/drafts/2026-08-04/reel-01/reel.mp4"
+    }
+  ]
+}

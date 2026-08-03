@@ -1,0 +1,45 @@
+name: Collect Instagram insights
+
+on:
+  schedule:
+    - cron: "15 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: instagram-insights
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    if: github.event_name == 'workflow_dispatch' || vars.IG_INSIGHTS_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+      INSTAGRAM_API_VERSION: ${{ vars.INSTAGRAM_API_VERSION || 'v23.0' }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Collect media performance
+        run: node automation/collect-insights.mjs
+
+      - name: Save report
+        shell: bash
+        run: |
+          if git diff --quiet -- analytics; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add analytics
+          git commit -m "Update Instagram insights"
+          git pull --rebase
+          git push

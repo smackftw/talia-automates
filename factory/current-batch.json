@@ -1,0 +1,86 @@
+{
+  "batchDate": "2026-08-04",
+  "generatedFrom": "balanced starter rotation",
+  "status": "draft",
+  "items": [
+    {
+      "id": "draft-2026-08-04-carousel-1",
+      "type": "carousel",
+      "topicId": "failure-workflow",
+      "category": "safety",
+      "caption": "A production workflow needs a second workflow that watches it.\n\n1. Catch the error\n2. Capture the input\n3. Alert the owner\n4. Link to the failed run\n\nAdd one shared error handler before adding another automation.\n\nSave this for your next build. Two free n8n starter templates are available through the link in bio.\n\n#n8n #automation #workflowautomation #aiautomation #solopreneur",
+      "slides": [
+        {
+          "eyebrow": "RELIABILITY LAYER",
+          "title": "Your workflow failed.",
+          "highlight": "Who finds out first?",
+          "body": "A production workflow needs a second workflow that watches it."
+        },
+        {
+          "eyebrow": "THE 4-STEP PATTERN",
+          "title": "Build it like this.",
+          "bullets": [
+            "Catch the error",
+            "Capture the input",
+            "Alert the owner",
+            "Link to the failed run"
+          ]
+        },
+        {
+          "eyebrow": "THE RULE TO KEEP",
+          "title": "A silent failure is more expensive than a visible error.",
+          "highlight": "Add one shared error handler before adding another automation.",
+          "cta": "SAVE THIS PATTERN →"
+        }
+      ]
+    },
+    {
+      "id": "draft-2026-08-04-carousel-2",
+      "type": "carousel",
+      "topicId": "duplicate-proof-leads",
+      "category": "safety",
+      "caption": "Retries are normal. Duplicate actions do not have to be.\n\n1. Create a unique lead key\n2. Check the sent log\n3. Send only if missing\n4. Write the key after success\n\nUse a stable key around every email, invoice, or CRM update.\n\nSave this for your next build. Two free n8n starter templates are available through the link in bio.\n\n#n8n #automation #workflowautomation #aiautomation #solopreneur",
+      "slides": [
+        {
+          "eyebrow": "DUPLICATE PROTECTION",
+          "title": "Never email a lead",
+          "highlight": "twice by accident.",
+          "body": "Retries are normal. Duplicate actions do not have to be."
+        },
+        {
+          "eyebrow": "THE 4-STEP PATTERN",
+          "title": "Build it like this.",
+          "bullets": [
+            "Create a unique lead key",
+            "Check the sent log",
+            "Send only if missing",
+            "Write the key after success"
+          ]
+        },
+        {
+          "eyebrow": "THE RULE TO KEEP",
+          "title": "A retry without an idempotency check can repeat the real-world action.",
+          "highlight": "Use a stable key around every email, invoice, or CRM update.",
+          "cta": "SAVE THIS PATTERN →"
+        }
+      ]
+    },
+    {
+      "id": "draft-2026-08-04-reel-1",
+      "type": "reel",
+      "topicId": "daily-lead-digest",
+      "category": "starter-workflows",
+      "caption": "Turn scattered enquiries into one ranked morning brief.\n\n1. Read new enquiries\n2. Normalize the fields\n3. Rank by buying intent\n4. Send one daily digest\n\nReview one list at 9 AM instead of checking four tools all day.\n\nSave this for your next build. Two free n8n starter templates are available through the link in bio.\n\n#n8n #automation #workflowautomation #aiautomation #solopreneur",
+      "hook": "One lead digest.",
+      "highlight": "Zero inbox hunting.",
+      "nodes": [
+        "Read new enquiries",
+        "Normalize the fields",
+        "Rank by buying intent",
+        "Send one daily digest"
+      ],
+      "takeaway": "Review one list at 9 AM instead of checking four tools all day.",
+      "voiceScript": "Stop checking four tools for new leads. Build one daily n eight n digest. Read new enquiries, normalize the fields, rank the obvious buying signals, and send one morning brief. Start with rules you can explain. Add A I only for the ambiguous messages later. You get one list at nine A M and fewer missed opportunities. The free starter templates are in my bio."
+    }
+  ]
+}

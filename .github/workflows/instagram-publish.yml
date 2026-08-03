@@ -2,8 +2,9 @@ name: Publish Instagram content
 
 on:
   schedule:
+    # Runs daily; the publisher exits safely when the queue has no item today.
     # 16:00 UTC = 19:00 Asia/Nicosia in August.
-    - cron: "0 16 5-8 8 *"
+    - cron: "0 16 * * *"
   workflow_dispatch:
     inputs:
       content_id:

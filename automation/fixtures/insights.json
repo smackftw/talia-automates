@@ -1,0 +1,27 @@
+{
+  "profile": {
+    "username": "talia.automates",
+    "followers_count": 12,
+    "media_count": 6
+  },
+  "media": [
+    {
+      "id": "fixture-carousel",
+      "caption": "Avoid duplicate actions and add a failure alert to every workflow.",
+      "media_product_type": "FEED",
+      "permalink": "https://www.instagram.com/",
+      "like_count": 8,
+      "comments_count": 2,
+      "metrics": { "reach": 100, "saved": 7, "shares": 3 }
+    },
+    {
+      "id": "fixture-reel",
+      "caption": "Your first n8n automation should be boring and reliable.",
+      "media_product_type": "REELS",
+      "permalink": "https://www.instagram.com/",
+      "like_count": 5,
+      "comments_count": 1,
+      "metrics": { "reach": 140, "saved": 2, "shares": 2 }
+    }
+  ]
+}
