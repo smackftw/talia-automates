@@ -1,5 +1,6 @@
 import json
 import os
+import shutil
 import subprocess
 from pathlib import Path
 
@@ -34,9 +35,19 @@ samples, sample_rate = kokoro.create(
 )
 sf.write(raw_path, samples, sample_rate)
 
+ffmpeg = shutil.which("ffmpeg")
+if not ffmpeg:
+    candidates = [
+        ROOT / "node_modules" / "@remotion" / "compositor-linux-x64-gnu" / "ffmpeg",
+        ROOT / "node_modules" / "@remotion" / "compositor-linux-x64-musl" / "ffmpeg",
+    ]
+    ffmpeg = next((str(candidate) for candidate in candidates if candidate.exists()), None)
+if not ffmpeg:
+    raise FileNotFoundError("ffmpeg was not found in PATH or the Remotion installation.")
+
 subprocess.run(
     [
-        "ffmpeg",
+        ffmpeg,
         "-loglevel",
         "error",
         "-y",
