@@ -10,4 +10,4 @@ Before publishing:
 4. Do not add an n8n affiliate link before approval.
 5. After approval, add the unique n8n Cloud URL with a visible affiliate disclosure immediately above the button.
 
-The site uses no cookies or advertising trackers. The newsletter section stays hidden until a public Kit form action is added to `newsletter-config.js`. Subscriber email goes directly to Kit; no Kit API secret belongs in this repository.
+The site uses no cookies, advertising trackers, account system, or email collection.
