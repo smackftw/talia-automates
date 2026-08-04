@@ -91,6 +91,9 @@ function summarize(profile, media) {
       .sort((a, b) => b.average - a.average);
   const categories = averageRanking(categoryScores);
   const formats = averageRanking(formatScores);
+  const hasPerformanceData = media.some(
+    (item) => (item.metrics.reach || 0) > 0 || (item.metrics.total_interactions || 0) > 0,
+  );
   return {
     profile,
     totals: {
@@ -104,10 +107,11 @@ function summarize(profile, media) {
       shares: media.reduce((sum, item) => sum + (item.metrics.shares || 0), 0),
     },
     recommendations: {
-      bestCategory: categories[0]?.name || "starter-workflows",
-      bestFormat: formats[0]?.name || "carousel",
-      note:
-        media.length < 6
+      bestCategory: hasPerformanceData ? categories[0]?.name : null,
+      bestFormat: hasPerformanceData ? formats[0]?.name : null,
+      note: !hasPerformanceData
+        ? "Instagram has not returned usable reach or interaction data yet; keep the publishing mix balanced."
+        : media.length < 6
           ? "Not enough history for a strong conclusion; keep the publishing mix balanced."
           : "Prioritize the best category, but reserve one weekly slot for exploration.",
     },
@@ -139,7 +143,10 @@ function reportMarkdown(snapshot) {
         )
         .join("\n")
     : "| — | — | — | 0 | 0 | 0.00% |";
-  return `# Instagram weekly performance\n\nGenerated: ${generatedAt}\n\n- Followers: ${summary.profile.followers_count ?? "not available"}\n- Media analyzed: ${summary.totals.mediaAnalyzed}\n- Combined reach: ${summary.totals.reach}\n- Interactions: ${summary.totals.interactions}\n- Saves: ${summary.totals.saves}\n- Shares: ${summary.totals.shares}\n\n## Recommendation\n\nFavor **${summary.recommendations.bestCategory}** in **${summary.recommendations.bestFormat}** format. ${summary.recommendations.note}\n\n## Best media by interactions / reach\n\n| Media | Format | Category | Reach | Interactions | Rate |\n|---|---|---|---:|---:|---:|\n${rows}\n`;
+  const recommendation = summary.recommendations.bestCategory
+    ? `Favor **${summary.recommendations.bestCategory}** in **${summary.recommendations.bestFormat}** format. ${summary.recommendations.note}`
+    : summary.recommendations.note;
+  return `# Instagram weekly performance\n\nGenerated: ${generatedAt}\n\n- Followers: ${summary.profile.followers_count ?? "not available"}\n- Media analyzed: ${summary.totals.mediaAnalyzed}\n- Combined reach: ${summary.totals.reach}\n- Interactions: ${summary.totals.interactions}\n- Saves: ${summary.totals.saves}\n- Shares: ${summary.totals.shares}\n\n## Recommendation\n\n${recommendation}\n\n## Best media by interactions / reach\n\n| Media | Format | Category | Reach | Interactions | Rate |\n|---|---|---|---:|---:|---:|\n${rows}\n`;
 }
 
 async function collectLive() {
