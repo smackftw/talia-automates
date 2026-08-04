@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-04T00:20:02.870Z",
+  "generatedAt": "2026-08-04T00:21:08.743Z",
   "source": "instagram-api",
   "summary": {
     "profile": {
@@ -16,9 +16,9 @@
       "shares": 0
     },
     "recommendations": {
-      "bestCategory": "ai-agents",
-      "bestFormat": "carousel",
-      "note": "Prioritize the best category, but reserve one weekly slot for exploration."
+      "bestCategory": null,
+      "bestFormat": null,
+      "note": "Instagram has not returned usable reach or interaction data yet; keep the publishing mix balanced."
     },
     "categoryRanking": [
       {

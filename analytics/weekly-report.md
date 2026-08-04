@@ -1,6 +1,6 @@
 # Instagram weekly performance
 
-Generated: 2026-08-04T00:20:02.870Z
+Generated: 2026-08-04T00:21:08.743Z
 
 - Followers: 0
 - Media analyzed: 6
@@ -11,7 +11,7 @@ Generated: 2026-08-04T00:20:02.870Z
 
 ## Recommendation
 
-Favor **ai-agents** in **carousel** format. Prioritize the best category, but reserve one weekly slot for exploration.
+Instagram has not returned usable reach or interaction data yet; keep the publishing mix balanced.
 
 ## Best media by interactions / reach
 
