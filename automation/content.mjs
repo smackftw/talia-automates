@@ -7,7 +7,7 @@ const fixedQueue = [
   {
     id: "reel-03",
     type: "reel",
-    scheduledDate: "2026-08-05",
+    scheduledDate: "2026-08-04",
     videoUrl: `${mediaBase}/reel-03-first-automation.mp4`,
     caption: `Your first automation should be boring.
 
