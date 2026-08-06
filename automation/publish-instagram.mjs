@@ -1,6 +1,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { publicationQueue } from "./content.mjs";
+import { cyprusScheduleContext } from "./schedule.mjs";
 
 class GracefulExit extends Error {}
 
@@ -24,12 +25,15 @@ if ((!requestedId && !scheduled) || (requestedId && scheduled)) {
   );
 }
 
-const todayInCyprus = new Intl.DateTimeFormat("en-CA", {
-  timeZone: "Asia/Nicosia",
-  year: "numeric",
-  month: "2-digit",
-  day: "2-digit",
-}).format(new Date());
+const scheduleContext = cyprusScheduleContext();
+const todayInCyprus = scheduleContext.date;
+
+if (scheduled && !scheduleContext.eligible) {
+  console.log(
+    `Scheduled retry skipped at ${scheduleContext.time} Asia/Nicosia; publication starts at 19:00.`,
+  );
+  throw new GracefulExit();
+}
 
 const item = requestedId
   ? publicationQueue.find((entry) => entry.id === requestedId)

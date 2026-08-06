@@ -19,6 +19,11 @@ The scheduled workflow remains disabled until repository variable
 `IG_AUTOPUBLISH_ENABLED` is set to `true`. Run a manual dry run before enabling
 it. Never commit an Instagram access token to this repository.
 
+The workflow attempts publication several times after 19:00 Asia/Nicosia. The
+publisher records successful media IDs and also checks recent Instagram captions,
+so backup attempts repair state or exit without creating duplicate posts. A failed
+scheduled publication is retried once automatically before an alert is opened.
+
 Local public-file validation:
 
 ```powershell

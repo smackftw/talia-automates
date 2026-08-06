@@ -2,9 +2,10 @@ name: Publish Instagram content
 
 on:
   schedule:
-    # Runs daily; the publisher exits safely when the queue has no item today.
-    # 16:00 UTC = 19:00 Asia/Nicosia in August.
-    - cron: "0 16 * * *"
+    # Retry away from the top of the hour, where GitHub reports peak load.
+    # The publisher waits until 19:00 Asia/Nicosia and exits after one success.
+    # Multiple attempts cover runner shortages and Cyprus daylight-saving time.
+    - cron: "7,27,47 16-17 * * *"
   workflow_dispatch:
     inputs:
       content_id:
@@ -52,6 +53,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+
+      - name: Test Cyprus publication window
+        run: node --test automation/schedule.test.mjs
 
       - name: Validate or publish
         shell: bash
