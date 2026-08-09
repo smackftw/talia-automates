@@ -2,6 +2,9 @@
   "usedTopicIds": [
     "failure-workflow",
     "duplicate-proof-leads",
-    "daily-lead-digest"
+    "daily-lead-digest",
+    "ai-one-step",
+    "human-approval",
+    "invoice-reminders"
   ]
 }
