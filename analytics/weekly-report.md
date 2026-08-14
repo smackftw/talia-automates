@@ -1,10 +1,10 @@
 # Instagram weekly performance
 
-Generated: 2026-08-13T06:45:16.447Z
+Generated: 2026-08-14T06:42:15.153Z
 
 - Followers: 1
 - Media analyzed: 9
-- Combined reach: 149
+- Combined reach: 150
 - Interactions: 0
 - Saves: 0
 - Shares: 0
@@ -17,7 +17,7 @@ Favor **starter-workflows** in **reel** format. Prioritize the best category, bu
 
 | Media | Format | Category | Reach | Interactions | Rate |
 |---|---|---|---:|---:|---:|
-| [18023516996691302](https://www.instagram.com/reel/Db6FRIsjPq7/) | reel | starter-workflows | 39 | 0 | 0.00% |
+| [18023516996691302](https://www.instagram.com/reel/Db6FRIsjPq7/) | reel | starter-workflows | 40 | 0 | 0.00% |
 | [18137647057515425](https://www.instagram.com/p/Dbtk0hNDzEl/) | carousel | safety | 1 | 0 | 0.00% |
 | [18110231570009255](https://www.instagram.com/reel/DboJovCE6CV/) | reel | ai-agents | 103 | 0 | 0.00% |
 | [18190718953343034](https://www.instagram.com/p/DbmDf9uDF0L/) | carousel | ai-agents | 1 | 0 | 0.00% |
