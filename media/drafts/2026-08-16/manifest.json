@@ -1,0 +1,39 @@
+{
+  "batchDate": "2026-08-16",
+  "status": "awaiting-approval",
+  "generatedFrom": "Instagram preference: starter-workflows",
+  "items": [
+    {
+      "id": "draft-2026-08-16-carousel-1",
+      "type": "carousel",
+      "topicId": "workflow-map",
+      "category": "workflow-design",
+      "caption": "Four boxes reveal most automation gaps before you open n8n.\n\n1. Trigger: what starts it?\n2. Input: what must exist?\n3. Action: what changes?\n4. Proof: how do we verify?\n\nIf four boxes are unclear, the automation is not ready to build.\n\nSave this for your next build. Two free n8n starter templates are available through the link in bio.\n\n#n8n #automation #workflowautomation #aiautomation #solopreneur",
+      "imageUrls": [
+        "https://smackftw.github.io/talia-automates/media/drafts/2026-08-16/carousel-01/slide-01.png",
+        "https://smackftw.github.io/talia-automates/media/drafts/2026-08-16/carousel-01/slide-02.png",
+        "https://smackftw.github.io/talia-automates/media/drafts/2026-08-16/carousel-01/slide-03.png"
+      ]
+    },
+    {
+      "id": "draft-2026-08-16-carousel-2",
+      "type": "carousel",
+      "topicId": "webhook-hardening",
+      "category": "workflow-design",
+      "caption": "Validate requests before they are allowed to trigger real work.\n\n1. Verify a secret\n2. Reject missing fields\n3. Limit payload size\n4. Return quickly, process later\n\nValidate first, acknowledge fast, and do slow work asynchronously.\n\nSave this for your next build. Two free n8n starter templates are available through the link in bio.\n\n#n8n #automation #workflowautomation #aiautomation #solopreneur",
+      "imageUrls": [
+        "https://smackftw.github.io/talia-automates/media/drafts/2026-08-16/carousel-02/slide-01.png",
+        "https://smackftw.github.io/talia-automates/media/drafts/2026-08-16/carousel-02/slide-02.png",
+        "https://smackftw.github.io/talia-automates/media/drafts/2026-08-16/carousel-02/slide-03.png"
+      ]
+    },
+    {
+      "id": "draft-2026-08-16-reel-1",
+      "type": "reel",
+      "topicId": "cloud-vs-self-hosted",
+      "category": "hosting",
+      "caption": "The cheapest server is not always the cheapest way to run automation.\n\n1. Estimate workflow value\n2. Count maintenance hours\n3. Assess data constraints\n4. Choose for the next 90 days\n\nStart with the option you can operate reliably, then revisit at scale.\n\nSave this for your next build. Two free n8n starter templates are available through the link in bio.\n\n#n8n #automation #workflowautomation #aiautomation #solopreneur",
+      "videoUrl": "https://smackftw.github.io/talia-automates/media/drafts/2026-08-16/reel-01/reel.mp4"
+    }
+  ]
+}
