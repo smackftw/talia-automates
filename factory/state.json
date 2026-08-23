@@ -2,12 +2,6 @@
   "usedTopicIds": [
     "failure-workflow",
     "duplicate-proof-leads",
-    "daily-lead-digest",
-    "ai-one-step",
-    "human-approval",
-    "invoice-reminders",
-    "workflow-map",
-    "webhook-hardening",
-    "cloud-vs-self-hosted"
+    "daily-lead-digest"
   ]
 }
