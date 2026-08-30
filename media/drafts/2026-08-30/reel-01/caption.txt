@@ -1,0 +1,12 @@
+Approval gates keep high-impact automations fast and reversible.
+
+1. AI prepares the draft
+2. Store the proposed action
+3. Ask for approve or reject
+4. Execute only after approval
+
+Automate the preparation and keep one tap of human control.
+
+Save this for your next build. Two free n8n starter templates are available through the link in bio.
+
+#n8n #automation #workflowautomation #aiautomation #solopreneur

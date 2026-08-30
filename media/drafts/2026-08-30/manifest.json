@@ -1,0 +1,39 @@
+{
+  "batchDate": "2026-08-30",
+  "status": "awaiting-approval",
+  "generatedFrom": "Instagram preference: safety",
+  "items": [
+    {
+      "id": "draft-2026-08-30-carousel-1",
+      "type": "carousel",
+      "topicId": "invoice-reminders",
+      "category": "starter-workflows",
+      "caption": "A small scheduled workflow can recover hours every month.\n\n1. Run every weekday\n2. Find overdue invoices\n3. Choose reminder stage\n4. Log the message sent\n\nConsistent reminders, a clean audit trail, and less awkward admin.\n\nSave this for your next build. Two free n8n starter templates are available through the link in bio.\n\n#n8n #automation #workflowautomation #aiautomation #solopreneur",
+      "imageUrls": [
+        "https://smackftw.github.io/talia-automates/media/drafts/2026-08-30/carousel-01/slide-01.png",
+        "https://smackftw.github.io/talia-automates/media/drafts/2026-08-30/carousel-01/slide-02.png",
+        "https://smackftw.github.io/talia-automates/media/drafts/2026-08-30/carousel-01/slide-03.png"
+      ]
+    },
+    {
+      "id": "draft-2026-08-30-carousel-2",
+      "type": "carousel",
+      "topicId": "ai-one-step",
+      "category": "ai-agents",
+      "caption": "AI is easiest to trust when it solves one narrow judgment task.\n\n1. Automate the fixed rules\n2. Isolate the fuzzy decision\n3. Force structured output\n4. Route low confidence to a human\n\nOne constrained model call is cheaper, clearer, and easier to test.\n\nSave this for your next build. Two free n8n starter templates are available through the link in bio.\n\n#n8n #automation #workflowautomation #aiautomation #solopreneur",
+      "imageUrls": [
+        "https://smackftw.github.io/talia-automates/media/drafts/2026-08-30/carousel-02/slide-01.png",
+        "https://smackftw.github.io/talia-automates/media/drafts/2026-08-30/carousel-02/slide-02.png",
+        "https://smackftw.github.io/talia-automates/media/drafts/2026-08-30/carousel-02/slide-03.png"
+      ]
+    },
+    {
+      "id": "draft-2026-08-30-reel-1",
+      "type": "reel",
+      "topicId": "human-approval",
+      "category": "ai-agents",
+      "caption": "Approval gates keep high-impact automations fast and reversible.\n\n1. AI prepares the draft\n2. Store the proposed action\n3. Ask for approve or reject\n4. Execute only after approval\n\nAutomate the preparation and keep one tap of human control.\n\nSave this for your next build. Two free n8n starter templates are available through the link in bio.\n\n#n8n #automation #workflowautomation #aiautomation #solopreneur",
+      "videoUrl": "https://smackftw.github.io/talia-automates/media/drafts/2026-08-30/reel-01/reel.mp4"
+    }
+  ]
+}
