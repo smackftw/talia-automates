@@ -1,6 +1,6 @@
 # Instagram weekly performance
 
-Generated: 2026-09-09T09:45:54.322Z
+Generated: 2026-09-10T09:44:01.877Z
 
 - Followers: 1
 - Media analyzed: 9
