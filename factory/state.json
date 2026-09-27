@@ -5,6 +5,9 @@
     "daily-lead-digest",
     "invoice-reminders",
     "ai-one-step",
-    "human-approval"
+    "human-approval",
+    "workflow-map",
+    "webhook-hardening",
+    "cloud-vs-self-hosted"
   ]
 }
