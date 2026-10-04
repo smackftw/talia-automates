@@ -1,0 +1,12 @@
+A production workflow needs a second workflow that watches it.
+
+1. Catch the error
+2. Capture the input
+3. Alert the owner
+4. Link to the failed run
+
+Add one shared error handler before adding another automation.
+
+Save this for your next build. Two free n8n starter templates are available through the link in bio.
+
+#n8n #automation #workflowautomation #aiautomation #solopreneur

@@ -1,0 +1,12 @@
+Retries are normal. Duplicate actions do not have to be.
+
+1. Create a unique lead key
+2. Check the sent log
+3. Send only if missing
+4. Write the key after success
+
+Use a stable key around every email, invoice, or CRM update.
+
+Save this for your next build. Two free n8n starter templates are available through the link in bio.
+
+#n8n #automation #workflowautomation #aiautomation #solopreneur
