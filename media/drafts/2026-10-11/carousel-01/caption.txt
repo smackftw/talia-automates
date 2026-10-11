@@ -1,0 +1,12 @@
+A small scheduled workflow can recover hours every month.
+
+1. Run every weekday
+2. Find overdue invoices
+3. Choose reminder stage
+4. Log the message sent
+
+Consistent reminders, a clean audit trail, and less awkward admin.
+
+Save this for your next build. Two free n8n starter templates are available through the link in bio.
+
+#n8n #automation #workflowautomation #aiautomation #solopreneur

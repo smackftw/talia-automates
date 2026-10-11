@@ -1,86 +1,86 @@
 {
-  "batchDate": "2026-10-04",
+  "batchDate": "2026-10-11",
   "generatedFrom": "Instagram preference: safety",
   "status": "draft",
   "items": [
     {
-      "id": "draft-2026-10-04-carousel-1",
+      "id": "draft-2026-10-11-carousel-1",
       "type": "carousel",
-      "topicId": "failure-workflow",
-      "category": "safety",
-      "caption": "A production workflow needs a second workflow that watches it.\n\n1. Catch the error\n2. Capture the input\n3. Alert the owner\n4. Link to the failed run\n\nAdd one shared error handler before adding another automation.\n\nSave this for your next build. Two free n8n starter templates are available through the link in bio.\n\n#n8n #automation #workflowautomation #aiautomation #solopreneur",
-      "slides": [
-        {
-          "eyebrow": "RELIABILITY LAYER",
-          "title": "Your workflow failed.",
-          "highlight": "Who finds out first?",
-          "body": "A production workflow needs a second workflow that watches it."
-        },
-        {
-          "eyebrow": "THE 4-STEP PATTERN",
-          "title": "Build it like this.",
-          "bullets": [
-            "Catch the error",
-            "Capture the input",
-            "Alert the owner",
-            "Link to the failed run"
-          ]
-        },
-        {
-          "eyebrow": "THE RULE TO KEEP",
-          "title": "A silent failure is more expensive than a visible error.",
-          "highlight": "Add one shared error handler before adding another automation.",
-          "cta": "SAVE THIS PATTERN →"
-        }
-      ]
-    },
-    {
-      "id": "draft-2026-10-04-carousel-2",
-      "type": "carousel",
-      "topicId": "duplicate-proof-leads",
-      "category": "safety",
-      "caption": "Retries are normal. Duplicate actions do not have to be.\n\n1. Create a unique lead key\n2. Check the sent log\n3. Send only if missing\n4. Write the key after success\n\nUse a stable key around every email, invoice, or CRM update.\n\nSave this for your next build. Two free n8n starter templates are available through the link in bio.\n\n#n8n #automation #workflowautomation #aiautomation #solopreneur",
-      "slides": [
-        {
-          "eyebrow": "DUPLICATE PROTECTION",
-          "title": "Never email a lead",
-          "highlight": "twice by accident.",
-          "body": "Retries are normal. Duplicate actions do not have to be."
-        },
-        {
-          "eyebrow": "THE 4-STEP PATTERN",
-          "title": "Build it like this.",
-          "bullets": [
-            "Create a unique lead key",
-            "Check the sent log",
-            "Send only if missing",
-            "Write the key after success"
-          ]
-        },
-        {
-          "eyebrow": "THE RULE TO KEEP",
-          "title": "A retry without an idempotency check can repeat the real-world action.",
-          "highlight": "Use a stable key around every email, invoice, or CRM update.",
-          "cta": "SAVE THIS PATTERN →"
-        }
-      ]
-    },
-    {
-      "id": "draft-2026-10-04-reel-1",
-      "type": "reel",
-      "topicId": "daily-lead-digest",
+      "topicId": "invoice-reminders",
       "category": "starter-workflows",
-      "caption": "Turn scattered enquiries into one ranked morning brief.\n\n1. Read new enquiries\n2. Normalize the fields\n3. Rank by buying intent\n4. Send one daily digest\n\nReview one list at 9 AM instead of checking four tools all day.\n\nSave this for your next build. Two free n8n starter templates are available through the link in bio.\n\n#n8n #automation #workflowautomation #aiautomation #solopreneur",
-      "hook": "One lead digest.",
-      "highlight": "Zero inbox hunting.",
+      "caption": "A small scheduled workflow can recover hours every month.\n\n1. Run every weekday\n2. Find overdue invoices\n3. Choose reminder stage\n4. Log the message sent\n\nConsistent reminders, a clean audit trail, and less awkward admin.\n\nSave this for your next build. Two free n8n starter templates are available through the link in bio.\n\n#n8n #automation #workflowautomation #aiautomation #solopreneur",
+      "slides": [
+        {
+          "eyebrow": "BORING = PROFITABLE",
+          "title": "Chase invoices",
+          "highlight": "without chasing people.",
+          "body": "A small scheduled workflow can recover hours every month."
+        },
+        {
+          "eyebrow": "THE 4-STEP PATTERN",
+          "title": "Build it like this.",
+          "bullets": [
+            "Run every weekday",
+            "Find overdue invoices",
+            "Choose reminder stage",
+            "Log the message sent"
+          ]
+        },
+        {
+          "eyebrow": "THE RULE TO KEEP",
+          "title": "Never send without checking payment status again at the last moment.",
+          "highlight": "Consistent reminders, a clean audit trail, and less awkward admin.",
+          "cta": "SAVE THIS PATTERN →"
+        }
+      ]
+    },
+    {
+      "id": "draft-2026-10-11-carousel-2",
+      "type": "carousel",
+      "topicId": "ai-one-step",
+      "category": "ai-agents",
+      "caption": "AI is easiest to trust when it solves one narrow judgment task.\n\n1. Automate the fixed rules\n2. Isolate the fuzzy decision\n3. Force structured output\n4. Route low confidence to a human\n\nOne constrained model call is cheaper, clearer, and easier to test.\n\nSave this for your next build. Two free n8n starter templates are available through the link in bio.\n\n#n8n #automation #workflowautomation #aiautomation #solopreneur",
+      "slides": [
+        {
+          "eyebrow": "USE AI PRECISELY",
+          "title": "Add one AI step.",
+          "highlight": "Not an AI agent.",
+          "body": "AI is easiest to trust when it solves one narrow judgment task."
+        },
+        {
+          "eyebrow": "THE 4-STEP PATTERN",
+          "title": "Build it like this.",
+          "bullets": [
+            "Automate the fixed rules",
+            "Isolate the fuzzy decision",
+            "Force structured output",
+            "Route low confidence to a human"
+          ]
+        },
+        {
+          "eyebrow": "THE RULE TO KEEP",
+          "title": "Do not let a model control the trigger, decision, and final action at once.",
+          "highlight": "One constrained model call is cheaper, clearer, and easier to test.",
+          "cta": "SAVE THIS PATTERN →"
+        }
+      ]
+    },
+    {
+      "id": "draft-2026-10-11-reel-1",
+      "type": "reel",
+      "topicId": "human-approval",
+      "category": "ai-agents",
+      "caption": "Approval gates keep high-impact automations fast and reversible.\n\n1. AI prepares the draft\n2. Store the proposed action\n3. Ask for approve or reject\n4. Execute only after approval\n\nAutomate the preparation and keep one tap of human control.\n\nSave this for your next build. Two free n8n starter templates are available through the link in bio.\n\n#n8n #automation #workflowautomation #aiautomation #solopreneur",
+      "hook": "Let AI draft.",
+      "highlight": "Let humans commit.",
       "nodes": [
-        "Read new enquiries",
-        "Normalize the fields",
-        "Rank by buying intent",
-        "Send one daily digest"
+        "AI prepares the draft",
+        "Store the proposed action",
+        "Ask for approve or reject",
+        "Execute only after approval"
       ],
-      "takeaway": "Review one list at 9 AM instead of checking four tools all day.",
-      "voiceScript": "Stop checking four tools for new leads. Build one daily n eight n digest. Read new enquiries, normalize the fields, rank the obvious buying signals, and send one morning brief. Start with rules you can explain. Add A I only for the ambiguous messages later. You get one list at nine A M and fewer missed opportunities. The free starter templates are in my bio."
+      "takeaway": "Automate the preparation and keep one tap of human control.",
+      "voiceScript": "Use A I for speed, not irreversible permission. Let the model prepare a draft, store the proposed action, ask a human to approve or reject, and execute only after approval. This works for emails, payments, deletions, and publishing. You automate almost all the work while keeping one tap of control. Save the pattern. My free n eight n templates are in the bio."
     }
   ]
 }
