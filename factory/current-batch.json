@@ -1,86 +1,86 @@
 {
-  "batchDate": "2026-10-11",
+  "batchDate": "2026-10-18",
   "generatedFrom": "Instagram preference: safety",
   "status": "draft",
   "items": [
     {
-      "id": "draft-2026-10-11-carousel-1",
+      "id": "draft-2026-10-18-carousel-1",
       "type": "carousel",
-      "topicId": "invoice-reminders",
-      "category": "starter-workflows",
-      "caption": "A small scheduled workflow can recover hours every month.\n\n1. Run every weekday\n2. Find overdue invoices\n3. Choose reminder stage\n4. Log the message sent\n\nConsistent reminders, a clean audit trail, and less awkward admin.\n\nSave this for your next build. Two free n8n starter templates are available through the link in bio.\n\n#n8n #automation #workflowautomation #aiautomation #solopreneur",
+      "topicId": "workflow-map",
+      "category": "workflow-design",
+      "caption": "Four boxes reveal most automation gaps before you open n8n.\n\n1. Trigger: what starts it?\n2. Input: what must exist?\n3. Action: what changes?\n4. Proof: how do we verify?\n\nIf four boxes are unclear, the automation is not ready to build.\n\nSave this for your next build. Two free n8n starter templates are available through the link in bio.\n\n#n8n #automation #workflowautomation #aiautomation #solopreneur",
       "slides": [
         {
-          "eyebrow": "BORING = PROFITABLE",
-          "title": "Chase invoices",
-          "highlight": "without chasing people.",
-          "body": "A small scheduled workflow can recover hours every month."
+          "eyebrow": "MAP BEFORE NODES",
+          "title": "Design the workflow",
+          "highlight": "on one page first.",
+          "body": "Four boxes reveal most automation gaps before you open n8n."
         },
         {
           "eyebrow": "THE 4-STEP PATTERN",
           "title": "Build it like this.",
           "bullets": [
-            "Run every weekday",
-            "Find overdue invoices",
-            "Choose reminder stage",
-            "Log the message sent"
+            "Trigger: what starts it?",
+            "Input: what must exist?",
+            "Action: what changes?",
+            "Proof: how do we verify?"
           ]
         },
         {
           "eyebrow": "THE RULE TO KEEP",
-          "title": "Never send without checking payment status again at the last moment.",
-          "highlight": "Consistent reminders, a clean audit trail, and less awkward admin.",
+          "title": "Starting with nodes hides missing business rules behind technical work.",
+          "highlight": "If four boxes are unclear, the automation is not ready to build.",
           "cta": "SAVE THIS PATTERN →"
         }
       ]
     },
     {
-      "id": "draft-2026-10-11-carousel-2",
+      "id": "draft-2026-10-18-carousel-2",
       "type": "carousel",
-      "topicId": "ai-one-step",
-      "category": "ai-agents",
-      "caption": "AI is easiest to trust when it solves one narrow judgment task.\n\n1. Automate the fixed rules\n2. Isolate the fuzzy decision\n3. Force structured output\n4. Route low confidence to a human\n\nOne constrained model call is cheaper, clearer, and easier to test.\n\nSave this for your next build. Two free n8n starter templates are available through the link in bio.\n\n#n8n #automation #workflowautomation #aiautomation #solopreneur",
+      "topicId": "webhook-hardening",
+      "category": "workflow-design",
+      "caption": "Validate requests before they are allowed to trigger real work.\n\n1. Verify a secret\n2. Reject missing fields\n3. Limit payload size\n4. Return quickly, process later\n\nValidate first, acknowledge fast, and do slow work asynchronously.\n\nSave this for your next build. Two free n8n starter templates are available through the link in bio.\n\n#n8n #automation #workflowautomation #aiautomation #solopreneur",
       "slides": [
         {
-          "eyebrow": "USE AI PRECISELY",
-          "title": "Add one AI step.",
-          "highlight": "Not an AI agent.",
-          "body": "AI is easiest to trust when it solves one narrow judgment task."
+          "eyebrow": "WEBHOOK CHECKLIST",
+          "title": "A webhook is a door.",
+          "highlight": "Add a lock.",
+          "body": "Validate requests before they are allowed to trigger real work."
         },
         {
           "eyebrow": "THE 4-STEP PATTERN",
           "title": "Build it like this.",
           "bullets": [
-            "Automate the fixed rules",
-            "Isolate the fuzzy decision",
-            "Force structured output",
-            "Route low confidence to a human"
+            "Verify a secret",
+            "Reject missing fields",
+            "Limit payload size",
+            "Return quickly, process later"
           ]
         },
         {
           "eyebrow": "THE RULE TO KEEP",
-          "title": "Do not let a model control the trigger, decision, and final action at once.",
-          "highlight": "One constrained model call is cheaper, clearer, and easier to test.",
+          "title": "A public URL should never trust the shape or source of its input.",
+          "highlight": "Validate first, acknowledge fast, and do slow work asynchronously.",
           "cta": "SAVE THIS PATTERN →"
         }
       ]
     },
     {
-      "id": "draft-2026-10-11-reel-1",
+      "id": "draft-2026-10-18-reel-1",
       "type": "reel",
-      "topicId": "human-approval",
-      "category": "ai-agents",
-      "caption": "Approval gates keep high-impact automations fast and reversible.\n\n1. AI prepares the draft\n2. Store the proposed action\n3. Ask for approve or reject\n4. Execute only after approval\n\nAutomate the preparation and keep one tap of human control.\n\nSave this for your next build. Two free n8n starter templates are available through the link in bio.\n\n#n8n #automation #workflowautomation #aiautomation #solopreneur",
-      "hook": "Let AI draft.",
-      "highlight": "Let humans commit.",
+      "topicId": "cloud-vs-self-hosted",
+      "category": "hosting",
+      "caption": "The cheapest server is not always the cheapest way to run automation.\n\n1. Estimate workflow value\n2. Count maintenance hours\n3. Assess data constraints\n4. Choose for the next 90 days\n\nStart with the option you can operate reliably, then revisit at scale.\n\nSave this for your next build. Two free n8n starter templates are available through the link in bio.\n\n#n8n #automation #workflowautomation #aiautomation #solopreneur",
+      "hook": "Cloud or self-hosted?",
+      "highlight": "Price your attention.",
       "nodes": [
-        "AI prepares the draft",
-        "Store the proposed action",
-        "Ask for approve or reject",
-        "Execute only after approval"
+        "Estimate workflow value",
+        "Count maintenance hours",
+        "Assess data constraints",
+        "Choose for the next 90 days"
       ],
-      "takeaway": "Automate the preparation and keep one tap of human control.",
-      "voiceScript": "Use A I for speed, not irreversible permission. Let the model prepare a draft, store the proposed action, ask a human to approve or reject, and execute only after approval. This works for emails, payments, deletions, and publishing. You automate almost all the work while keeping one tap of control. Save the pattern. My free n eight n templates are in the bio."
+      "takeaway": "Start with the option you can operate reliably, then revisit at scale.",
+      "voiceScript": "Cloud or self hosted n eight n? Do not compare only the monthly fee. Estimate the value of the workflow, count maintenance hours, check your data constraints, and choose for the next ninety days. A cheap server becomes expensive when it creates a weekly support job. Start with what you can operate reliably, then revisit at scale. Save this decision rule for later."
     }
   ]
 }

@@ -1,0 +1,12 @@
+Validate requests before they are allowed to trigger real work.
+
+1. Verify a secret
+2. Reject missing fields
+3. Limit payload size
+4. Return quickly, process later
+
+Validate first, acknowledge fast, and do slow work asynchronously.
+
+Save this for your next build. Two free n8n starter templates are available through the link in bio.
+
+#n8n #automation #workflowautomation #aiautomation #solopreneur

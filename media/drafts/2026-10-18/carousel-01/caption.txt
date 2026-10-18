@@ -1,0 +1,12 @@
+Four boxes reveal most automation gaps before you open n8n.
+
+1. Trigger: what starts it?
+2. Input: what must exist?
+3. Action: what changes?
+4. Proof: how do we verify?
+
+If four boxes are unclear, the automation is not ready to build.
+
+Save this for your next build. Two free n8n starter templates are available through the link in bio.
+
+#n8n #automation #workflowautomation #aiautomation #solopreneur
