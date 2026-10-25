@@ -1,0 +1,12 @@
+Turn scattered enquiries into one ranked morning brief.
+
+1. Read new enquiries
+2. Normalize the fields
+3. Rank by buying intent
+4. Send one daily digest
+
+Review one list at 9 AM instead of checking four tools all day.
+
+Save this for your next build. Two free n8n starter templates are available through the link in bio.
+
+#n8n #automation #workflowautomation #aiautomation #solopreneur
